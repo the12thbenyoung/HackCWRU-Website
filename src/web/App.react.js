@@ -1,6 +1,7 @@
 import Button from 'components/Button/Button.react';
 import Header from 'components/Header/Header.react';
 import Logo from 'components/Logo/Logo.react';
+import Navbar from 'components/Navbar/Navbar.react';
 import React from 'react';
 import styles from 'web/App.scss';
 import Summary from 'components/Summary/Summary.react';
@@ -10,6 +11,9 @@ export default class App extends React.Component {
   render() {
     return (
       <div className={styles.landingPageContent}>
+        <div className = {styles.navbar}>
+          <Navbar />
+        </div>
         <div className={styles.container}>
           <div className={styles.logo}>
             <Logo />
