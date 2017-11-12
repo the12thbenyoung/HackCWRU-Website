@@ -1,10 +1,6 @@
 @import "stylesheets/globals.scss";
 
-$highlightColor: '#E91E63';
-$highlightBgColor: '#00bcd4';
-$defaultSelected: 'sales';
-
-.navbar{
+.navbar {
   background: $darkBlue;
   color: white;
   width: 22;
