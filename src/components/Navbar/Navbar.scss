@@ -2,7 +2,7 @@
 
 .navbar {
   background: $darkBlue;
+  text-align: left;
   color: white;
-  width: 22;
-  @include PrimaryFont();
+  width: 20;
 }
