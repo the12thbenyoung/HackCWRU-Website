@@ -2,7 +2,7 @@ import React from 'react';
 import SideNav, { Nav, NavIcon, NavText } from 'react-sidenav';
 import SvgIcon from 'react-icons-kit';
 import Scroll, {Link, Element} from 'react-scroll'
-
+let scroller = Scroll.scroller;
 import { ic_aspect_ratio } from 'react-icons-kit/md/ic_aspect_ratio';
 import { ic_question_answer } from 'react-icons-kit/md/ic_question_answer';
 import {ic_person} from 'react-icons-kit/md/ic_person';
@@ -15,39 +15,25 @@ export default class Navbar extends React.Component {
   render(){
     return(
       <div className = {styles.navbar}>
-          <Link activeClass="active" to='text'>test</Link>
           <SideNav
-            highlightBgColor={globals.lightBlue}
+            highlightBgColor='#8EEEFF'
+            highlightColor='black'
             onItemSelection={ (id, parent) =>
               {
-                switch(id) {
-                  case 'info':
-                    console.log("info")
-                    break;
-                  case 'FAQs':
-                    console.log("FAQ");
-                    break;
-                  case 'event':
-                    console.log("event");
-                    break;
-                  default:
-                    break;
+                scroller.scrollTo(this.props.sections.find(section => section.text === id).sectionID,
+                {
+                  duration: 800,
+                  delay: 0,
                 }
+                );
               }
             }
           >
-              <Nav id='info'>
-                  <NavIcon><SvgIcon size={20} icon={ic_aspect_ratio}/></NavIcon>
-                  <NavText> Info </NavText>
-              </Nav>
-              <Nav id='FAQs'>
-                  <NavIcon><SvgIcon size={20} icon={ic_question_answer}/></NavIcon>
-                  <NavText> FAQs </NavText>
-              </Nav>
-              <Nav id='event'>
-                  <NavIcon><SvgIcon size={20} icon={ic_person}/></NavIcon>
-                  <NavText> Event </NavText>
-              </Nav>
+            {this.props.sections.map((section) =>
+                <Nav id={section.text} key={section.sectionID}>
+                  <NavText> {section.text} </NavText>
+                </Nav>
+            )}
           </SideNav>
       </div>
     )
