@@ -17,20 +17,20 @@ export default class Navbar extends React.Component {
       <div className = {styles.navbar}>
           <SideNav
             highlightBgColor='#8EEEFF'
-            highlightColor='black'
+            highlightColor='white'
             onItemSelection={ (id, parent) =>
               {
                 scroller.scrollTo(this.props.sections.find(section => section.text === id).sectionID,
                 {
                   duration: 800,
-                  delay: 0,
+                  delay: 0
                 }
                 );
               }
             }
           >
             {this.props.sections.map((section) =>
-                <Nav id={section.text} key={section.sectionID}>
+                <Nav class = {styles.nav} id={section.text} key={section.sectionID}>
                   {/*<NavIcon><SvgIcon size={20} icon={section.icon}/></NavIcon>*/}
                   <NavText> {section.text} </NavText>
                 </Nav>

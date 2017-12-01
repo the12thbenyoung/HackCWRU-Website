@@ -18,8 +18,39 @@ import {ic_person} from 'react-icons-kit/md/ic_person';
 export default class App extends React.Component {
 
   render() {
+    let isMobile = {
+      Android: function() {
+          return navigator.userAgent.match(/Android/i);
+      },
+      BlackBerry: function() {
+          return navigator.userAgent.match(/BlackBerry/i);
+      },
+      iOS: function() {
+          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+      },
+      Opera: function() {
+          return navigator.userAgent.match(/Opera Mini/i);
+      },
+      Windows: function() {
+          return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+      },
+      any: function() {
+          return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+      }
+  };
+
+    let test;
+    if(isMobile.any()){
+      test = <h1>"You are using a mobile device"</h1>
+    }
+    else {
+      let test = <h1>"You are using a desktop/laptop"</h1>
+    }
     return (
       <div>
+      <div>
+        {test}
+      </div>
       <div className = {styles.navbar}>
         <Navbar
           sections = {[
